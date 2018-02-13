@@ -16,10 +16,10 @@
 <br />
 
 #### 流程介紹
-1. **輸入帳號、密碼後，按下登入**．<br />
+1. **輸入帳號、密碼後，按下登入** <br />
 View與Presenter透過自定義的Contract Interface溝通，將登入資料(username, password)傳給Presenter
 
-2. **透過API判斷是否登入成功**
+2. **透過API判斷是否登入成功** <br/>
 Presenter透過Repository去跟各相關的服務(API, Database, Sharedpreferences...)換取資料後，Presenter得到結果後，通知給View做相對應的動作
 
 ## 參考
