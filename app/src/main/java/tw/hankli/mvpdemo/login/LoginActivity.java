@@ -8,6 +8,10 @@ import android.widget.Toast;
 
 import tw.hankli.mvpdemo.R;
 
+/**
+ * 將Activity、Fragment當成View
+ */
+
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     private LoginContract.Presenter presenter;

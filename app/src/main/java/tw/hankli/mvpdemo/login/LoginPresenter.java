@@ -4,6 +4,7 @@ import tw.hankli.mvpdemo.model.LoginRepository;
 
 /**
  * Created by hank on 12/02/2018.
+ * 邏輯組裝區
  */
 
 public class LoginPresenter implements LoginContract.Presenter {

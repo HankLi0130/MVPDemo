@@ -2,6 +2,7 @@ package tw.hankli.mvpdemo.model;
 
 /**
  * Created by hank on 12/02/2018.
+ * 複合服務區
  */
 
 public class LoginRepository {

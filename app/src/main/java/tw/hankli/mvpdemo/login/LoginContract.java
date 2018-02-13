@@ -5,8 +5,7 @@ import tw.hankli.mvpdemo.BaseView;
 
 /**
  * Created by hank on 12/02/2018.
- * <p>
- * 登入
+ * View 與 Presenter的溝通管道
  */
 
 public interface LoginContract {
