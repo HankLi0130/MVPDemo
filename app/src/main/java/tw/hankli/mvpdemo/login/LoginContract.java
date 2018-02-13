@@ -1,0 +1,28 @@
+package tw.hankli.mvpdemo.login;
+
+import tw.hankli.mvpdemo.BasePresenter;
+import tw.hankli.mvpdemo.BaseView;
+
+/**
+ * Created by hank on 12/02/2018.
+ * <p>
+ * 登入
+ */
+
+public interface LoginContract {
+
+    interface View extends BaseView<Presenter> {
+
+        // 登入成功
+        void loginSuccess();
+
+        // 登入失敗
+        void loginFail();
+    }
+
+    interface Presenter extends BasePresenter {
+
+        // 登入邏輯
+        void login(String username, String password);
+    }
+}
