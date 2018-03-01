@@ -17,6 +17,10 @@ public interface LoginContract {
 
         // 登入失敗
         void loginFail();
+
+        void showDialog();
+
+        void hideDialog();
     }
 
     interface Presenter extends BasePresenter {

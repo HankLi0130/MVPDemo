@@ -1,5 +1,11 @@
 package tw.hankli.mvpdemo.login;
 
+import android.util.Log;
+
+import io.reactivex.CompletableObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import tw.hankli.mvpdemo.model.LoginRepository;
 
 /**
@@ -8,6 +14,8 @@ import tw.hankli.mvpdemo.model.LoginRepository;
  */
 
 public class LoginPresenter implements LoginContract.Presenter {
+
+    private static final String TAG = "LoginPresenter";
 
     private LoginContract.View view;
     private LoginRepository loginRepository;
@@ -21,22 +29,35 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void start() {
-
-    }
-
-    @Override
     public void login(String username, String password) {
 
-        // 利用Api判斷是否登入成功
-        if (loginRepository.loginByApi(username, password)) {
+        view.showDialog();
 
-            // 通知View登入成功
-            view.loginSuccess();
-        } else {
+        loginRepository.loginByApi(username, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    view.hideDialog();
+                })
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            // 通知View登入失敗
-            view.loginFail();
-        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        // 通知View登入成功
+                        view.loginSuccess();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "Error: " + e);
+
+                        // 通知View登入失敗
+                        view.loginFail();
+                    }
+                });
     }
 }

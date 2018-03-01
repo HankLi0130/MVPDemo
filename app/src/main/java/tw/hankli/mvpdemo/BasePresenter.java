@@ -6,5 +6,4 @@ package tw.hankli.mvpdemo;
 
 public interface BasePresenter {
 
-    void start();
 }
